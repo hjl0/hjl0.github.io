@@ -6,6 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* 스타일을 추가하여 텍스트 숨기고 보이는 토글 기능 구현 */
+			.toggle-content {
+				display: none;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -45,39 +51,52 @@
 								<p>You can <a href="assets/cv.pdf" target="_blank">view my CV</a> or <a href="assets/cv.pdf" download>download my CV</a>.</p>
 							</article>
 
-						<!-- Education -->
-							<article id="education">
-								<h2 class="major">Education</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p>2020.03 - 2024.08 : B.S. Student major in School of Electrical Engineering at Ulsan National Institute of Science and Technology (<a href="https://www.unist.ac.kr/">UNIST</a>)</p>
-								<p>2024.09 - Present : M.S. & Ph.D. Student in School of Intelligent Robots at Sungkyunkwan University (<a href="https://gradschool.skku.edu/grad/">SKKU</a>)</p>
-							</article>
-
-						<!-- Paper -->
-							<article id="paper">
-								<h2 class="major">Paper</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>--</p>
-							</article>
-
-						<!-- Study (new section) -->
+						<!-- Study -->
 							<article id="study">
 								<h2 class="major">Study</h2>
 								<span class="image main"><img src="images/pic04.jpg" alt="Study Image" /></span>
 								<p>Here you can find the summaries of the concepts and papers I've studied.</p>
 
+								<!-- Concepts Section -->
 								<h3>Concepts</h3>
 								<ul>
-									<li><strong>Reinforcement Learning:</strong> A type of machine learning algorithm focused on how agents ought to take actions in an environment to maximize cumulative reward.</li>
-									<li><strong>Quadruped Robots:</strong> Four-legged robots designed to navigate rough terrain and maintain balance.</li>
-									<!-- Add more concepts here -->
+									<li>
+										<button onclick="toggleContent('concept1')">Reinforcement Learning</button>
+										<div id="concept1" class="toggle-content">
+											<p>This is a summary of reinforcement learning.</p>
+											<input type="file" id="fileInput1" />
+											<pre id="fileContent1"></pre>
+										</div>
+									</li>
+									<li>
+										<button onclick="toggleContent('concept2')">Quadruped Robots</button>
+										<div id="concept2" class="toggle-content">
+											<p>This is a summary of quadruped robots.</p>
+											<input type="file" id="fileInput2" />
+											<pre id="fileContent2"></pre>
+										</div>
+									</li>
 								</ul>
 
+								<!-- Papers Section -->
 								<h3>Papers</h3>
 								<ul>
-									<li><strong>Paper 1 Title:</strong> A brief summary of the first paper goes here.</li>
-									<li><strong>Paper 2 Title:</strong> A brief summary of the second paper goes here.</li>
-									<!-- Add more papers here -->
+									<li>
+										<button onclick="toggleContent('paper1')">Paper 1 Title</button>
+										<div id="paper1" class="toggle-content">
+											<p>This is a summary of paper 1.</p>
+											<input type="file" id="fileInput3" />
+											<pre id="fileContent3"></pre>
+										</div>
+									</li>
+									<li>
+										<button onclick="toggleContent('paper2')">Paper 2 Title</button>
+										<div id="paper2" class="toggle-content">
+											<p>This is a summary of paper 2.</p>
+											<input type="file" id="fileInput4" />
+											<pre id="fileContent4"></pre>
+										</div>
+									</li>
 								</ul>
 							</article>
 
@@ -130,6 +149,44 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<!-- Custom Script for File Upload and Toggle Functionality -->
+			<script>
+				// Toggle content visibility
+				function toggleContent(id) {
+					const element = document.getElementById(id);
+					if (element.style.display === 'none' || element.style.display === '') {
+						element.style.display = 'block';
+					} else {
+						element.style.display = 'none';
+					}
+				}
+
+				// File reading function for each file input
+				document.getElementById('fileInput1').addEventListener('change', function() {
+					readFileContent(this.files[0], 'fileContent1');
+				});
+
+				document.getElementById('fileInput2').addEventListener('change', function() {
+					readFileContent(this.files[0], 'fileContent2');
+				});
+
+				document.getElementById('fileInput3').addEventListener('change', function() {
+					readFileContent(this.files[0], 'fileContent3');
+				});
+
+				document.getElementById('fileInput4').addEventListener('change', function() {
+					readFileContent(this.files[0], 'fileContent4');
+				});
+
+				function readFileContent(file, elementId) {
+					const reader = new FileReader();
+					reader.onload = function(event) {
+						document.getElementById(elementId).textContent = event.target.result;
+					};
+					reader.readAsText(file);
+				}
+			</script>
 
 	</body>
 </html>
