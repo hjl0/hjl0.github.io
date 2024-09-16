@@ -106,10 +106,7 @@ analytics:
 author:
   name             : "Hwajung Lee"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : |
-  Just Do It.
-  To everything there is a season, and a time for every purpose under heaven.
-  Make the most of every age and opportunity, so that you may live without regret.
+  bio              : "Just Do It.<br>To everything there is a season, and a time for every purpose under heaven.<br>Make the most of every age and opportunity, so that you may live without regret."
 
   location         : "Suwon, Korea"
   email            : "uniesrev0a@skku.edu"
